@@ -5,7 +5,7 @@ import 'package:hasura_connect/hasura_connect.dart';
 
 class TokenInterceptor extends Interceptor {
  
-  Function getToken;
+  Map<String,String> getToken;
  
   TokenInterceptor({required this.getToken});
  
@@ -37,7 +37,7 @@ class TokenInterceptor extends Interceptor {
   @override
   Future? onRequest(Request request, HasuraConnect connect) async {
 
-      request.headers.addAll(await getToken());
+      request.headers.addAll( getToken);
 
     debugPrint('----------------------------------------------------------');
     debugPrint('Hasura onRequest');
